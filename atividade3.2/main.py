@@ -219,12 +219,12 @@ t.clear()
 def des_bandeira_bra():
     desenha_ret(-300,-150,600,300,"#009440")
 
-def des_losang_br():
+def des_losang_br(xlosbr,ylosbr,colorlosbr):
     t.pu()
-    t.goto(0, 120)
+    t.goto(xlosbr,ylosbr)
     t.pd()
 
-    t.fillcolor("yellow")
+    t.fillcolor(colorlosbr)
     t.begin_fill()
 
     t.goto(150, 0)
@@ -245,8 +245,92 @@ def des_bola_br(xb12,yb12,tamanhobr12,colorbr):
     t.end_fill()
 
 des_bandeira_bra()
-des_losang_br()
+des_losang_br(0,120,"#FFD100")
 des_bola_br(0,-80,80,"#302681")
 
+t.clear()
+
+#bandeira13(argentina)
+
+def circ_arg(xarg,yarg,tamanhoarg,colorarg):
+    t.pu()
+    t.goto(xarg, yarg)
+    t.pd()
+
+    t.fillcolor(colorarg)
+    t.begin_fill()
+    t.circle(tamanhoarg)
+    t.end_fill()
+def des_bandeira_arg():
+    desenha_ret(-300,-100,600,100,"#6CACE4")
+    desenha_ret(-300,0,600,100,"#FFFFFF")
+    desenha_ret(-300,100,600,100,"#6CACE4")
+    
+des_bandeira_arg()
+circ_arg(0,20,30,"#FFB81C")
+
+t.clear()
+
+#bandeira14(finlandia)
+
+def cruz_fin(xfin,yfin,colorfin):
+    t.pu()
+    t.goto(-100, -100)
+    t.pd()
+
+    t.fillcolor("white")
+    t.begin_fill()
+    for _ in range(2):
+        t.fd(60)
+        t.lt(90)
+        t.fd(300)
+        t.lt(90)
+    t.end_fill()
+
+def des_bandeira_fin():
+    desenha_ret(-300,-100,600,300,"#BA0C2F")
+
+des_bandeira_fin()
+cruz_fin(-100,-100,60,300,"#FFFFFF")
+cruz_fin(-300,0,)
+
+#pra baixo errado
+
+t.pu()
+t.goto(-300, 0)
+t.pd()
+
+t.begin_fill()
+for _ in range(2):
+    t.fd(600)
+    t.lt(90)
+    t.fd(60)
+    t.lt(90)
+t.end_fill()
+
+t.pu()
+t.goto(-80, -100)
+t.pd()
+
+t.fillcolor("blue")
+t.begin_fill()
+for _ in range(2):
+    t.fd(30)
+    t.lt(90)
+    t.fd(300)
+    t.lt(90)
+t.end_fill()
+
+t.pu()
+t.goto(-300, 15)
+t.pd()
+
+t.begin_fill()
+for _ in range(2):
+    t.fd(600)
+    t.lt(90)
+    t.fd(30)
+    t.lt(90)
+t.end_fill()
 
 mainloop()
