@@ -4,29 +4,6 @@ t = Turtle()
 t.speed(0)
 from time import sleep
 
-# def desenha_triang(x,y,larg,alt,color):
-#     t.pu()
-#     t.goto(x,y)
-#     t.pd()
-
-#     t.begin_fill()
-#     t.fillcolor(color)
-#     for _ in range(2):
-#         t.fd(larg)
-#         t.rt(90)
-#         t.fd(alt)
-#         t.rt(90)
-#     t.end_fill()
-
-# def desenha_bandeira_fra():
-#     desenha_triang(-200,200,50,150,"red")
-#     desenha_triang(-150,200,50,150,"white")
-#     desenha_triang(-100,200,50,150,"blue")
-
-# desenha_bandeira_fra()
-# sleep(3)
-# t.clear()
-
 #bandeira1(japao)
 
 def desenha_ret(x,y,larg,alt,color):
@@ -58,7 +35,7 @@ def desenha_bandeira_jap():
 
 desenha_bandeira_jap()
 desenh_circ(0,-25,80,"red")
-# sleep(3)
+sleep(2)
 t.clear()
 
 #bandeira2 (frança)
@@ -69,7 +46,7 @@ def desenha_bandeira_fra():
     desenha_ret(100,-100,200,300,"#E1000F")
 
 desenha_bandeira_fra()
-#
+sleep(2)
 t.clear()
 
 
@@ -82,6 +59,7 @@ def desenha_bandeira_ita():
 
 desenha_bandeira_ita()
 
+sleep(2)
 t.clear()
 
 #bandeira4(costamarfim)
@@ -93,6 +71,7 @@ def desenha_bandeira_costmarf():
 
 desenha_bandeira_costmarf()
 
+sleep(2)
 t.clear()
 
 #bandeira5(suica)
@@ -118,6 +97,7 @@ def des_cruz(x5,y5,lado,colorcruz):
 desenha_bandeira_suica()
 des_cruz(30,20,60,"white")
 
+sleep(2)
 t.clear()
 
 #bandeira6(belgica)
@@ -129,6 +109,7 @@ def des_bandeira_bel():
 
 des_bandeira_bel()
 
+sleep(2)
 t.clear()
 
 #bandeira7(polonia)
@@ -138,7 +119,8 @@ def des_bandeira_pol():
     desenha_ret(-300,-100,600,150,"#DC143C")
 
 des_bandeira_pol()
-#
+
+sleep(2)
 t.clear()
 
 #bandeira8(russia)
@@ -150,6 +132,9 @@ def des_bandeira_rus():
 
 des_bandeira_rus()
 
+sleep(2)
+t.clear()
+
 #bandeira9(alemanha)
 
 def des_bandeira_alema():
@@ -158,7 +143,8 @@ def des_bandeira_alema():
     desenha_ret(-300,-100,600,100,"#FFCE00")
 
 des_bandeira_alema()
-#
+
+sleep(2)
 t.clear()
 
 #bandeira10(nigeria)
@@ -170,6 +156,7 @@ def des_bandeira_nig():
 
 des_bandeira_nig()
 
+sleep(2)
 t.clear()
 
 #bandeira11(turquia)
@@ -212,6 +199,7 @@ lua_turq(-100,-50,80,"white")
 lua_turq2(-70,-50,60,"red")
 estrela_turq(40,10,80,"white")
 
+sleep(2)
 t.clear()
 
 #bandeira12(brasil)
@@ -248,6 +236,7 @@ des_bandeira_bra()
 des_losang_br(0,120,"#FFD100")
 des_bola_br(0,-80,80,"#302681")
 
+sleep(2)
 t.clear()
 
 #bandeira13(argentina)
@@ -269,21 +258,22 @@ def des_bandeira_arg():
 des_bandeira_arg()
 circ_arg(0,20,30,"#FFB81C")
 
+sleep(2)
 t.clear()
 
 #bandeira14(finlandia)
 
-def cruz_fin(xfin,yfin,colorfin):
+def cruz_fin(xfin,yfin,ladofin,ladofin2,colorfin):
     t.pu()
-    t.goto(-100, -100)
+    t.goto(xfin, yfin)
     t.pd()
 
-    t.fillcolor("white")
+    t.fillcolor(colorfin)
     t.begin_fill()
     for _ in range(2):
-        t.fd(60)
+        t.fd(ladofin)
         t.lt(90)
-        t.fd(300)
+        t.fd(ladofin2)
         t.lt(90)
     t.end_fill()
 
@@ -292,45 +282,61 @@ def des_bandeira_fin():
 
 des_bandeira_fin()
 cruz_fin(-100,-100,60,300,"#FFFFFF")
-cruz_fin(-300,0,)
+cruz_fin(-300,0,600,60,"#FFFFFF")
+cruz_fin(-85,-100,30,300,'#00205B')
+cruz_fin(-300,15,600,30,'#00205B')
 
-#pra baixo errado
+sleep(2)
+t.clear()
 
-t.pu()
-t.goto(-300, 0)
-t.pd()
+#bandeira15(suecia)
 
-t.begin_fill()
-for _ in range(2):
-    t.fd(600)
-    t.lt(90)
-    t.fd(60)
-    t.lt(90)
-t.end_fill()
+def des_bandeira_sue():
+    desenha_ret(-300,-100,600,300,'#00529B')
 
-t.pu()
-t.goto(-80, -100)
-t.pd()
+def cruz_sue(xsue,ysue,ladosue,ladosue2,colorsue):
+    t.pu()
+    t.goto(xsue, ysue)
+    t.pd()
+    t.fillcolor(colorsue)
+    t.begin_fill()
+    for _ in range(2):
+        t.fd(ladosue)
+        t.lt(90)
+        t.fd(ladosue2)
+        t.lt(90)
+    t.end_fill()
 
-t.fillcolor("blue")
-t.begin_fill()
-for _ in range(2):
-    t.fd(30)
-    t.lt(90)
-    t.fd(300)
-    t.lt(90)
-t.end_fill()
+des_bandeira_sue()
+cruz_sue(-100,-100,60,300,'#FFCE00')
+cruz_sue(-300,0,600,60,'#FFCE00')
 
-t.pu()
-t.goto(-300, 15)
-t.pd()
+sleep(2)
+t.clear()
 
-t.begin_fill()
-for _ in range(2):
-    t.fd(600)
-    t.lt(90)
-    t.fd(30)
-    t.lt(90)
-t.end_fill()
+#bandeira16(chile)
+def des_bandeira_chi():
+    desenha_ret(-300,-100,600,150,'red')
+    desenha_ret(-300,50,600,150,'white')
+    desenha_ret(-300,50,150,150,'blue')
+
+def estr_chil(xchil,ychil,ladochil,colorchil):
+    t.pu()
+    t.goto(xchil,ychil)
+    t.pd()
+
+    t.fillcolor(colorchil)
+    t.begin_fill()
+    for _ in range(5):
+        t.fd(ladochil)
+        t.lt(144)
+    t.end_fill()
+
+des_bandeira_chi()
+estr_chil(-225,100,60,'#FFFFFF')
+
+sleep(2)
+t.clear()
+
 
 mainloop()
