@@ -338,5 +338,18 @@ estr_chil(-225,100,60,'#FFFFFF')
 sleep(2)
 t.clear()
 
+escolha = textinput('Bandeiras', 'Escolha a bandeira(Japao ou Brasil):')
+
+if escolha == 'japao':
+    desenha_bandeira_jap
+    desenh_circ(0,25,80,'red')
+
+elif escolha == 'brasil':
+    des_bandeira_bra()
+    des_losang_br(0,120,'#FFD100')
+    des_bola_br(0,-80,80,'#302681')
+
+else:
+    print('Bandeira não encontrada')
 
 mainloop()
