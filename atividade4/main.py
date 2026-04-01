@@ -1,9 +1,7 @@
 from turtle import *
 from time import *
 
-# def soma_2(x):
-#     return x + 2
-#elevX = 2^x
+#funçoes
 
 def raizX(x):
     return x**0.5
@@ -15,10 +13,10 @@ def func3(x):
     return 2**x
 
 def func4(x):
-    return 5-func3
+    return 5-x**2
 
 def func5(x):
-    return func3-5*x+6
+    return x**2-5*x+6
 
 def func6(x):
     return x**3-x**2-x+1
@@ -44,7 +42,7 @@ def des_plancart():
 
 des_plancart()
 
-#função 
+#função aula
 
 # t.color('red')
 # t.pu()
@@ -65,7 +63,7 @@ t.pd()
 
 
 for x in range(1,300):
-    t.goto(x*2,raizX(x*2))
+    t.goto(x,raizX(x)*10)
 
 sleep(2)
 t.clear()
@@ -81,10 +79,10 @@ t.goto(-299,sobX(10))
 t.pd()
 
 for x in range(-299,0):
-    t.goto(x,sobX(x/50)*8)
+    t.goto(x,sobX(x/50)*10)
 
 for x in range(1,299):
-    t.goto(x,sobX(x/50)*8)
+    t.goto(x,sobX(x/50)*10)
 
 sleep(2)
 t.clear()
@@ -96,32 +94,58 @@ t.color('black')
 des_plancart()
 
 t.pu()
-t.goto(-299,0)
+t.goto(-100,0)
 t.pd()
 
-for x in range(-299,200):
-    t.goto(x,func3(x))
+for x in range(-100,100):
+    t.goto(x*2,func3(x/20)*10)
     
 sleep(2)
 t.clear()
 
+#função 4
+
 t.rt(90)
 des_plancart()
 
+t.pu()
+t.goto(-100,func4(-10)*10)
+t.pd()
 
+for x in range(-100,100):
+    t.goto(x*3, func4(x/10)*10)
 
+sleep(2)
+t.clear()
 
+#função 5 
 
+t.rt(90)
+des_plancart()
 
+t.pu()
+t.goto(-100,func5(-10)*10)
+t.pd()
 
+for x in range(-100,100):
+    t.goto(x*3, func5(x/10)*10)
 
+sleep(2)
+t.clear()
 
+#função 6 
 
+t.rt(90)
+des_plancart()
 
+t.pu()
+t.goto(-100,func4(-10)*5)
+t.pd()
 
+for x in range(-200,200):
+    t.goto(x*5, func6(x/10)*5)
 
-
-
-
+sleep(2)
+t.clear()
 
 mainloop()
