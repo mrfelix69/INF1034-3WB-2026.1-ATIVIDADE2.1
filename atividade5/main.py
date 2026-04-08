@@ -4,11 +4,11 @@ import sys
 init()
 
 # (variable) batman_png surface 
-batman_font = font.Font('batmfa__.ttf', 26)
-batman_img = image.load('pngegg.png')
-batman_ing = transform.scale(batman_img,(165,165))
+spiderman_font = font.Font('spiderfont.ttf', 26)
+spiderman_img = image.load('spider.png')
+spiderman_img = transform.scale(spiderman_img,(250,250))
 mixer.init()
-mixer.music.load('batman_1966.mp3')
+mixer.music.load('spidersong.mp3')
 mixer.music.set_volume(0.3)
 mixer.music.play(0)
 
@@ -16,12 +16,16 @@ window = display.set_mode((1200,700))
 
 window.fill((151, 209, 250))
 
+nuvem_x = 850
+nuvem_incio = 850
+
 while True:
     for ev in event.get():
         if ev.type == QUIT:
             quit()
             sys.exit()
     #desenho
+    window.fill((151, 209, 250))
 
     # draw.rect(window,(255,0,0),(200,300,100,50),0)
 
@@ -45,10 +49,14 @@ while True:
     draw.line(window,(255,242,81),(120,230),(170,180),6)
     draw.line(window,(255,242,81),(280,230),(230,180),6)
 
-    draw.circle(window,(255,255,255),(900,120),50) #nuvem
-    draw.circle(window,(255,255,255),(950,120),50) #nuvem
-    draw.circle(window,(255,255,255),(850,120),50) #nuvem   
-    draw.circle(window,(255,255,255),(1000,120),50) #nuvem 
+    nuvem_x += 0.5
+    if nuvem_x > 1350:
+        nuvem_x = nuvem_incio
+
+    draw.circle(window,(255,255,255),(nuvem_x,120),50) #nuvem
+    draw.circle(window,(255,255,255),(nuvem_x+50,120),50) #nuvem
+    draw.circle(window,(255,255,255),(nuvem_x-50,120),50) #nuvem   
+    draw.circle(window,(255,255,255),(nuvem_x+100,120),50) #nuvem 
 
     draw.line(window, (255,255,255), (417, 410), (417, 485), 3)#janela2
     draw.line(window, (255,255,255), (380, 447), (455, 447), 3)#janela2
@@ -63,12 +71,14 @@ while True:
     draw.line(window,(101,67,33),(880,300),(880,290),2)
     draw.line(window,(101,67,33),(940,370),(940,360),2)
 
-    batman_text1 = batman_font.render('A',True,(0,0,0))
-    batman_text2 = batman_font.render('BatCaverna',True,(0,0,0))
+    spiderman1 = spiderman_font.render('I Am',True,(0,0,0))
+    spiderman2 = spiderman_font.render('Spider-Man',True,(0,0,0))
 
-    window.blit(batman_ing,(600,390))
-    window.blit(batman_text1,(680,300))
-    window.blit(batman_text2,(620,350))
+    window.blit(spiderman_img,(600,390))
+    window.blit(spiderman1,(680,300))
+    window.blit(spiderman2,(620,350))
+
+
 
 
     display.update()
