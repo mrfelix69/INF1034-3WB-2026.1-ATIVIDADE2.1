@@ -34,6 +34,12 @@ while running:
     for ev in event.get():
         if ev.type == QUIT:
             running = False
+        if ev.type == MOUSEBUTTONUP:
+            if ev.button == 1:
+                texto = 'I said I AM SPIDER-MAN'
+            elif ev.button == 1:
+                texto = 'i am spider-man'
+
         if ev.type == KEYDOWN:
             key_pressed = ev.key
             if key_pressed == K_SPACE:
