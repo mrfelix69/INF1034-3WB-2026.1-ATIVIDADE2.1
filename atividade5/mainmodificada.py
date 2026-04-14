@@ -40,17 +40,17 @@ while running:
         if ev.type == MOUSEBUTTONUP:
             if ev.button == 1:
                 texto = 'I said I AM SPIDER-MAN'                if sol_x < 400:
-                    if sfx_morning:
+                if sfx_morning:
                         sfx_morning.play()
                 elif sol_x < 800:
                     if sfx_afternoon:
                         sfx_afternoon.play()
                 else:
                 if sfx_night:
-                        sfx_night.play()            elif ev.button == 1:
-                texto = 'i am spider-man'
-        if ev.type == MOUSEMOTION:
-            sol_x, sol_y = ev.pos
+                        sfx_night.play()            
+                elif ev.button == 1:
+        #if ev.type == MOUSEMOTION:
+            #sol_x, sol_y = ev.pos
 
         if ev.type == KEYDOWN:
             key_pressed = ev.key

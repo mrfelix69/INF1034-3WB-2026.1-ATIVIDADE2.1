@@ -17,6 +17,38 @@ noite_sfx = mixer.Sound('noite_sfx.mp3')
 running = True
 clock = time.Clock()
 
+# cores dos estágios do dia
+cor_manha = (135, 206, 250)
+cor_tarde = (252, 184, 72)
+cor_noite = (15, 24, 82)
+
+def interpolar_cor(cor1, cor2, t):
+    """Interpola linearmente entre duas cores. t vai de 0 a 1"""
+    t = max(0, min(1, t))  # garante que t está entre 0 e 1
+    r = int(cor1[0] + (cor2[0] - cor1[0]) * t)
+    g = int(cor1[1] + (cor2[1] - cor1[1]) * t)
+    b = int(cor1[2] + (cor2[2] - cor1[2]) * t)
+    return (r, g, b)
+
+def calcular_cor_fundo(sol_x):
+    """Calcula a cor de fundo baseado na posição do sol"""
+    # Range de 70 a 1130 (1060 pixels totais)
+    min_x = 70
+    max_x = 1130
+    range_x = max_x - min_x
+    
+    # Normaliza posição do sol entre 0 e 1
+    pos_normalizada = (sol_x - min_x) / range_x
+    
+    if pos_normalizada < 0.5:
+        # Transição manhã -> tarde (0 a 0.5)
+        t = pos_normalizada * 2  # mapeia 0-0.5 para 0-1
+        return interpolar_cor(cor_manha, cor_tarde, t)
+    else:
+        # Transição tarde -> noite (0.5 a 1)
+        t = (pos_normalizada - 0.5) * 2  # mapeia 0.5-1 para 0-1
+        return interpolar_cor(cor_tarde, cor_noite, t)
+
 
 window = display.set_mode((1200,700))
 
@@ -90,13 +122,8 @@ while running:
         nuvem_x = nuvem_min
         nuvem_v = -nuvem_v
 
-    #fundo conforme a posicao do sol
-    if sol_x < 400:
-        background_color = (135, 206, 250)  # manha
-    elif sol_x < 800:
-        background_color = (252, 184, 72)   # tarde
-    else:
-        background_color = (15, 24, 82)     # noite
+    # calcula fundo com transição suave baseada na posição do sol
+    background_color = calcular_cor_fundo(sol_x)
 
     #desenho
     window.fill(background_color)
