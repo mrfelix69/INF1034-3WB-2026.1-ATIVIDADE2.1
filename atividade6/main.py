@@ -10,9 +10,12 @@ spiderman_img = transform.scale(spiderman_img,(250,250))
 #mixer.music.load('spidersong.mp3')
 #mixer.music.set_volume(0)
 #mixer.music.play(0)
-manha_sfx = mixer.Sound('manha_sfx.mp3')
-tarde_sfx = mixer.Sound('tarde_sfx.mp3')
-noite_sfx = mixer.Sound('noite_sfx.mp3')
+manha_sfx = mixer.Sound('manha.wav')
+tarde_sfx = mixer.Sound('tarde.wav')
+noite_sfx = mixer.Sound('noite.wav')
+manha_sfx.set_volume(0.3)
+tarde_sfx.set_volume(0.3)
+noite_sfx.set_volume(0.3)
 
 running = True
 clock = time.Clock()
@@ -52,16 +55,16 @@ while running:
             key_pressed = ev.key
             if key_pressed == K_SPACE:
                 sol_x = sol_x + 450
-                sol_y = sol_y + 0
+                sol_y = sol_y - 150
 
         if ev.type == MOUSEBUTTONUP:
             if ev.button == 1:
                 if sol_x < 400:
-                    manha.sfx.play()
+                    manha_sfx.play()
                 elif sol_x < 800:
-                    tarde.sfx.play()
+                    tarde_sfx.play()
                 else:
-                    noite.sfx.play()
+                    noite_sfx.play()
                     
 #update
     dt = clock.get_time()/1000

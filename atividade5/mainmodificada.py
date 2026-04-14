@@ -6,13 +6,10 @@ init()
 spiderman_font = font.Font('spiderfont.ttf', 26)
 spiderman_img = image.load('spider.png')
 spiderman_img = transform.scale(spiderman_img,(250,250))
-#mixer.init()
-#mixer.music.load('spidersong.mp3')
-#mixer.music.set_volume(0)
-#mixer.music.play(0)
-manha_sfx = mixer.Sound('manha_sfx.mp3')
-tarde_sfx = mixer.Sound('tarde_sfx.mp3')
-noite_sfx = mixer.Sound('noite_sfx.mp3')
+mixer.init()
+mixer.music.load('spidersong.mp3')
+mixer.music.set_volume(0)
+mixer.music.play(0)
 
 running = True
 clock = time.Clock()
@@ -42,8 +39,15 @@ while running:
             running = False
         if ev.type == MOUSEBUTTONUP:
             if ev.button == 1:
-                texto = 'I said I AM SPIDER-MAN'
-            elif ev.button == 1:
+                texto = 'I said I AM SPIDER-MAN'                if sol_x < 400:
+                    if sfx_morning:
+                        sfx_morning.play()
+                elif sol_x < 800:
+                    if sfx_afternoon:
+                        sfx_afternoon.play()
+                else:
+                if sfx_night:
+                        sfx_night.play()            elif ev.button == 1:
                 texto = 'i am spider-man'
         if ev.type == MOUSEMOTION:
             sol_x, sol_y = ev.pos
@@ -54,15 +58,9 @@ while running:
                 sol_x = sol_x + 450
                 sol_y = sol_y + 0
 
-        if ev.type == MOUSEBUTTONUP:
-            if ev.button == 1:
-                if sol_x < 400:
-                    manha.sfx.play()
-                elif sol_x < 800:
-                    tarde.sfx.play()
-                else:
-                    noite.sfx.play()
-                    
+        if ev.type == MOUSE:
+
+
 #update
     dt = clock.get_time()/1000
     keys = key.get_pressed()
