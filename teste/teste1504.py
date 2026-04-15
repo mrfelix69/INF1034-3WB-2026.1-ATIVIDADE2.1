@@ -23,14 +23,10 @@ window = display.set_mode((1200,700))
 #window.fill((151, 209, 250))
 
 timer = 0
-
 #definicao variaveis
-
 sol_x = 200
 sol_y = 150
-#sol_speed = 300
-
-movimentomouse = False
+sol_speed = 300
 
 nuvem_x = 850
 nuvem_v = 150
@@ -44,11 +40,14 @@ while running:
     for ev in event.get():
         if ev.type == QUIT:
             running = False
+        if ev.type == MOUSEBUTTONUP:
+            if ev.button == 1:
+                texto = 'I said I AM SPIDER-MAN'
+            elif ev.button == 1:
+                texto = 'i am spider-man'
+        if ev.type == MOUSEMOTION:
+            sol_x, sol_y = ev.pos
 
-        # if ev.type == MOUSEMOTION:
-        #         sol_x, sol_y = ev.pos
-
-            
         if ev.type == KEYDOWN:
             key_pressed = ev.key
             if key_pressed == K_SPACE:
@@ -63,32 +62,21 @@ while running:
                     tarde_sfx.play()
                 else:
                     noite_sfx.play()
-        
-        if ev.type == KEYDOWN:
-            key_pressed = ev.key
-            if key_pressed == K_j:
-                movimentomouse = not movimentomouse
-        
-    
-
+                    
 #update
     dt = clock.get_time()/1000
     keys = key.get_pressed()
 
     #se eu pressionar a tecla D então sol ir baixo cima esquerda essa coisa
-    if not movimentomouse:
-        if keys[K_d]: 
-            sol_x += 500 * dt
-        elif keys[K_a]:
-            sol_x -= 500* dt
-        elif keys[K_w]:
-            sol_y -= 500 * dt
-        elif keys[K_s]:
-            sol_y += 500 * dt
-    else:
-        if ev.type == MOUSEMOTION:
-            sol_x, sol_y = ev.pos
-        
+
+    if keys[K_d]: 
+        sol_x += sol_speed * dt
+    if keys[K_a]:
+        sol_x -= sol_speed * dt
+    if keys[K_w]:
+        sol_y -= sol_speed * dt
+    if keys[K_s]:
+        sol_y += sol_speed * dt
 
     #o sol dentro da janela
     sol_x = max(70, min(1130, sol_x))
@@ -115,6 +103,7 @@ while running:
 
     # draw.rect(window,(255,0,0),(200,300,100,50),0)
 
+    draw.circle(window,(255,242,81),(sol_x,sol_y),70) #sol
     draw.rect(window,(72, 157, 37),(0,550,1200,700),0) #grama
     draw.polygon(window,(0,255,0),((350,300),(600,300),(475,200))) #telhado
     draw.rect(window,(255, 255, 255),(350,300,250,250),0) #casa
@@ -125,7 +114,6 @@ while running:
     draw.rect(window,(97, 97, 97),(380,410,75,75),0) #janela
     draw.rect(window,(0,0,0),(380,410,75,75),3) #janela
 
-    draw.circle(window,(255,242,81),(sol_x,sol_y),70) #sol
     draw.line(window,(255,242,81),(sol_x, sol_y-100),(sol_x, sol_y-50),6) #sol
     draw.line(window,(255,242,81),(sol_x, sol_y+100),(sol_x, sol_y+50),6) #sol
     draw.line(window,(255,242,81),(sol_x-100, sol_y),(sol_x-50, sol_y),6) #sol
@@ -145,7 +133,7 @@ while running:
     draw.line(window, (255,255,255), (417, 410), (417, 485), 3)#janela2
     draw.line(window, (255,255,255), (380, 447), (455, 447), 3)#janela2
 
-    draw.circle(window,(255,0,0),(900,350),10)   # maca
+    draw.circle(window,(255,0,0),(900,350),10)   # maçã
     draw.circle(window,(255,165,0),(970,330),10) # laranja
     draw.circle(window,(255,0,0),(880,310),10)
     draw.circle(window,(255,165,0),(940,380),10)
