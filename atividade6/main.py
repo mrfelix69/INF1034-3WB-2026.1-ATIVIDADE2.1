@@ -8,11 +8,11 @@ spiderman_img = image.load('spider.png')
 spiderman_img = transform.scale(spiderman_img,(250,250))
 
 manha_sfx = mixer.Sound('manha.wav')
-tarde_sfx = mixer.Sound('tarde.wav')
-noite_sfx = mixer.Sound('noite.wav')
+elden_tarde_sfx = mixer.Sound('eldentarde.wav')
+outerwild_night_sfx = mixer.Sound('outerwildnight.wav')
 manha_sfx.set_volume(0.3)
-tarde_sfx.set_volume(0.3)
-noite_sfx.set_volume(0.3)
+elden_tarde_sfx.set_volume(0.3)
+outerwild_night_sfx.set_volume(0.3)
 
 running = True
 clock = time.Clock()
@@ -60,9 +60,9 @@ while running:
                 if sol_x < 400:
                     manha_sfx.play()
                 elif sol_x < 800:
-                    tarde_sfx.play()
+                    elden_tarde_sfx.play()
                 else:
-                    noite_sfx.play()
+                    outerwild_night_sfx.play()
         
         if ev.type == KEYDOWN:
             key_pressed = ev.key
