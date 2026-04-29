@@ -28,8 +28,8 @@ def jokenpo():
         print('=' * 50)
         continuar = input('quer continuar? ')
         if continuar == 'sim':
-            print('Boa sorte!')
+            print('Continuando...')
         else:
-            break
+            break 
 
 jokenpo()
