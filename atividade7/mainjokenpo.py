@@ -1,5 +1,4 @@
 import random
-
 def jokenpo():
     pontos = 0
     pontosbot = 0
@@ -26,7 +25,7 @@ def jokenpo():
         print(f'pontos bot: {pontosbot}')
         print(f'pontos usuario: {pontos}')
         print('=' * 50)
-        continuar = input('quer continuar? ')
+        continuar = input('Deseja continuar? (sim/nao): ')
         if continuar == 'sim':
             print('Continuando...')
         else:
