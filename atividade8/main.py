@@ -45,25 +45,41 @@ def criptografasenha(senha):
     senha_crip = ''
     for carac in senha:
         if carac.isdigit():
+            #copiar logica do maiusculo, trocando ref para 'a'
+            ref = ord('0') #A = 65
+            ascii_carac = ord(carac) #1 etapa
+            pos_alfa = ascii_carac - ref #2 etapa ()
+            pos_ces = pos_alfa + 3 #3 etapa (pega a posição da letra do alfabeto e soma 3, como por exemplo a letra 'A' = 65, se for ela soma 3, resultando em 68, obtendo uma nova letra)
+            pos_rest = pos_ces%10 #4 etapa (divide o numero pelo tanto de letras do alfabeto (26 letras) e obtem o resto da divisao).
+            letra_ces = chr(ref+pos_rest) #5 etapa ()
+            senha_crip += letra_ces
             pass
         elif 'A' <= carac <= 'Z':
             ref = ord('A') #A = 65
-            ascii_carac = ord(carac) #1
-            pos_alfa = ascii_carac - ref #2
-            pos_ces = pos_alfa + 3 #3
-            pos_rest = pos_ces%26 #4 
-            letra_ces = carac(ref+pos_rest) #5
+            ascii_carac = ord(carac) #1 etapa
+            pos_alfa = ascii_carac - ref #2 etapa ()
+            pos_ces = pos_alfa + 3 #3 etapa (pega a posição da letra do alfabeto e soma 3, como por exemplo a letra 'A' = 65, se for ela soma 3, resultando em 68, obtendo uma nova letra)
+            pos_rest = pos_ces%26 #4 etapa (divide o numero pelo tanto de letras do alfabeto (26 letras) e obtem o resto da divisao).
+            letra_ces = chr(ref+pos_rest) #5 etapa ()
             senha_crip += letra_ces
             
         elif 'a' <= carac <= 'z':
+            ref = ord('a') #A = 65
+            ascii_carac = ord(carac) #1 etapa
+            pos_alfa = ascii_carac - ref #2 etapa ()
+            pos_ces = pos_alfa + 3 #3 etapa (pega a posição da letra do alfabeto e soma 3, como por exemplo a letra 'A' = 65, se for ela soma 3, resultando em 68, obtendo uma nova letra)
+            pos_rest = pos_ces%26 #4 etapa (divide o numero pelo tanto de letras do alfabeto (26 letras) e obtem o resto da divisao).
+            letra_ces = chr(ref+pos_rest) #5 etapa ()
+            senha_crip += letra_ces
             pass
         else:
             senha_crip += carac
+    return senha_crip
 
+print(criptografasenha('ZARALHAR'))
 
+# pygame.init()
+# screen = pygame.display.set_mode((1280, 720))
+# running = True
 
-pygame.init()
-screen = pygame.display.set_mode((1280, 720))
-running = True
-
-pygame.display.update()
+# pygame.display.update()
